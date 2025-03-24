@@ -1,10 +1,11 @@
 #include <app.h>
 
 int main() {
-    // App menu;
-    // menu.Launch();
-    App main;
-    main.Launch();
+    App* menu = new App(AppType::menu);
+    menu->Launch();
+    if (menu->GetAppChoice() == AppType::none) return 0;
+    App* game = new App(menu->GetAppChoice());
+    game->Launch();
 }
 // писькадрол
 /*

@@ -11,12 +11,12 @@ class Chip : public Element {
     void SetColor(Color);
     std::pair<int, int> GetPos();
     Color GetColor();
+    bool IsEnabled();
     void Enable();
     void Disable();
     virtual void Draw(sf::RenderWindow&);
 
  private:
-    int radius_;
     std::pair<int, int> pos_;
     Color color_;
     bool enabled_;

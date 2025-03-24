@@ -2,7 +2,6 @@
 
 Chip::Chip() : Element() {
     pos_ = { 0, 0 };
-    radius_ = kCellSize / 2;
     color_ = Color::white;
     enabled_ = true;
 }
@@ -27,6 +26,10 @@ Color Chip::GetColor() {
     return color_;
 }
 
+bool Chip::IsEnabled() {
+    return enabled_;
+}
+
 void Chip::Enable() {
     enabled_ = true;
 }
@@ -37,8 +40,8 @@ void Chip::Disable() {
 
 void Chip::Draw(sf::RenderWindow& window) {
     sf::CircleShape chip;
-    chip.setFillColor(color_ == Color::white ? sf::Color::White : sf::Color::Black);
-    chip.setRadius(radius_);
-    chip.setPosition(sf::Vector2f(pos_.second * kCellSize, pos_.first * kCellSize));
-    window.draw(chip);
+    chip.setFillColor(color_ == Color::white ? sf::Color(50, 205, 50) : sf::Color::Black);
+    chip.setRadius(kCellSize / 2 - 4);
+    chip.setPosition(sf::Vector2f(pos_.second * kCellSize + 4, pos_.first * kCellSize + 4));
+    if (enabled_) window.draw(chip);
 }
